@@ -1,2 +1,2 @@
 # DBMS-Project
-Hotel  management Sysytem
+Hotel  Management Sysytem
