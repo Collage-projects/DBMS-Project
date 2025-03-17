@@ -1,0 +1,255 @@
+ /* Reset and base styles */
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navigation styles */
+nav {
+    background-color: white;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-image {
+    width: 20px;
+    height: 20px;
+    margin-right: 0.5rem;
+    padding:24px;
+    margin-left: 0%;
+}
+
+.logo-text {
+    font-weight: bold;
+    font-size: 1.25rem;
+    color: #1a1a1a;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.nav-button {
+    padding: 0.5rem 1.5rem;
+    border-radius: 9999px;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.nav-button.active {
+    background-color: #4f46e5;
+    color: white;
+}
+
+.nav-button:not(.active) {
+    background-color: #f3f4f6;
+    color: #374151;
+}
+
+.nav-button:not(.active):hover {
+    background-color: #e5e7eb;
+}
+
+/* Main content styles */
+.main-container {
+    display: flex;
+    flex: 1;
+}
+
+.image-panel {
+    width: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.hotel-image {
+    width: 40%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+    padding: 24px;
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+   
+}
+
+.form-panel {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background-color: white;
+    box-shadow: 0 0 20px rgba(0,0,0,0.05);
+}
+
+.form-container {
+    width: 100%;
+    max-width: 28rem;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+}
+
+h1 {
+    font-size: 1.875rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #1e293b;
+}
+
+.welcome-text {
+    color: #64748b;
+    margin-bottom: 2rem;
+}
+
+/* Form styles */
+.form {
+    display: none;
+}
+
+.form.active {
+    display: block;
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+label {
+    display: block;
+    color: #334155;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 0.375rem;
+    outline: none;
+    transition: all 0.2s;
+    background-color: #f8fafc;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+    background-color: white;
+}
+
+.remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+}
+
+.remember {
+    display: flex;
+    align-items: center;
+}
+
+.remember input {
+    margin-right: 0.5rem;
+}
+
+a {
+    color: #4f46e5;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #4f46e5;
+    color: white;
+    border: none;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);
+}
+
+.submit-button:hover {
+    background-color: #4338ca;
+}
+
+.signup-prompt {
+    text-align: center;
+    margin-top: 1.25rem;
+}
+
+.signup-prompt span {
+    color: #64748b;
+}
+
+/* Responsive styles */
+@media (min-width: 768px) {
+    .main-container {
+        background: linear-gradient(to right, #4f46e5 50%, #f8fafc 50%);
+    }
+    
+    .image-panel {
+        display: block;
+    }
+    
+    .form-panel {
+        width: 50%;
+        background-color: transparent;
+        box-shadow: none;
+    }
+    
+    .form-container {
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+}
+
+/* Hotel image */
+.hotel-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+}
