@@ -35,7 +35,12 @@
       // Update text
       actionText.textContent = 'sign in';
   }
-  
+  const loginLink = document.getElementById('loginLink');
+
+loginLink.addEventListener('click', showLoginForm);
+  const signupLink = document.getElementById('signupLink');
+
+signupLink.addEventListener('click', showSigninForm);
   // Form submission (prevent default behavior)
   document.querySelectorAll('form').forEach(form => {
       form.addEventListener('submit', function(e) {
