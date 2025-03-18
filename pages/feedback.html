@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Grand Hotel - Feedback</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .navbar {
+            background-color: #222;
+            color: #fff;
+            padding: 15px 0;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #e6b800;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 20px;
+        }
+        
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 10px;
+        }
+        
+        .nav-links a.active {
+            border-bottom: 2px solid #e6b800;
+        }
+        
+        .hero {
+            background-image: url('/api/placeholder/1200/400');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .feedback-section {
+            padding: 40px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: #e6b800;
+            margin: 10px auto 0;
+        }
+        
+        .feedback-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .feedback-card {
+            background-color: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .feedback-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feedback-image {
+            height: 200px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .feedback-content {
+            padding: 20px;
+        }
+        
+        .feedback-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 10px;
+        }
+        
+        .feedback-title {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #222;
+        }
+        
+        .feedback-excerpt {
+            color: #555;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .read-more {
+            display: inline-block;
+            color: #e6b800;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        .read-more:hover {
+            text-decoration: underline;
+        }
+        
+        .feedback-form {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        textarea.form-control {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .rating-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .rating-label {
+            margin-right: 15px;
+            font-weight: bold;
+        }
+        
+        .stars {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .stars button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: #ddd;
+        }
+        
+        .stars button.active {
+            color: #e6b800;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #e6b800;
+            color: #fff;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #d6a800;
+        }
+        
+        .footer {
+            background-color: #222;
+            color: #fff;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #e6b800;
+        }
+        
+        .footer-column p {
+            margin-bottom: 10px;
+            color: #bbb;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #bbb;
+            text-decoration: none;
+        }
+        
+        .footer-column a:hover {
+            color: #e6b800;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #999;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar .container {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 15px;
+            }
+            
+            .nav-links li {
+                margin: 0 10px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .feedback-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">The Grand Hotel</a>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="room_booking.html">Room Booking</a></li>
+                <li><a href="room_status.html">Room Status</a></li>
+                <li><a href="feedback.html" class="active">Feedback</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" style="background-image: url('../image/feedback.jpg');">
+        <div class="hero-content">
+            <h1>Guest Feedback</h1>
+            <p>Read what our guests have to say about their experience at The Grand Hotel or share your own story.</p>
+        </div>
+    </section>
+
+    <!-- Feedback Blog Section -->
+    <section class="feedback-section">
+        <div class="container">
+            <h2 class="section-title">Recent Guest Experiences</h2>
+            
+            <div class="feedback-grid">
+                <!-- Feedback Card 1 -->
+                <div class="feedback-card">
+                    <div class="feedback-image" style="background-image: url('/api/placeholder/400/200');"></div>
+                    <div class="feedback-content">
+                        <div class="feedback-meta">
+                            <span>Posted by: John Smith</span>
+                            <span>March 15, 2025</span>
+                        </div>
+                        <h3 class="feedback-title">An Unforgettable Stay</h3>
+                        <p class="feedback-excerpt">Our family vacation at The Grand Hotel exceeded all expectations. The staff was incredibly attentive, and the room service was impeccable. We especially enjoyed the pool area and...</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+                
+                <!-- Feedback Card 2 -->
+                <div class="feedback-card">
+                    <div class="feedback-image" style="background-image: url('/api/placeholder/400/200');"></div>
+                    <div class="feedback-content">
+                        <div class="feedback-meta">
+                            <span>Posted by: Sarah Johnson</span>
+                            <span>March 10, 2025</span>
+                        </div>
+                        <h3 class="feedback-title">Perfect for Business Travel</h3>
+                        <p class="feedback-excerpt">As a frequent business traveler, I appreciate the amenities and services at The Grand Hotel. The high-speed internet was reliable, and the business center was well-equipped...</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+                
+                <!-- Feedback Card 3 -->
+                <div class="feedback-card">
+                    <div class="feedback-image" style="background-image: url('/api/placeholder/400/200');"></div>
+                    <div class="feedback-content">
+                        <div class="feedback-meta">
+                            <span>Posted by: Michael Wong</span>
+                            <span>March 5, 2025</span>
+                        </div>
+                        <h3 class="feedback-title">Culinary Delights</h3>
+                        <p class="feedback-excerpt">The restaurant at The Grand Hotel is a hidden gem. We tried the chef's tasting menu and were blown away by the creativity and flavors. Each dish was beautifully presented and...</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+                
+                <!-- Feedback Card 4 -->
+                <div class="feedback-card">
+                    <div class="feedback-image" style="background-image: url('/api/placeholder/400/200');"></div>
+                    <div class="feedback-content">
+                        <div class="feedback-meta">
+                            <span>Posted by: Emily Carter</span>
+                            <span>February 28, 2025</span>
+                        </div>
+                        <h3 class="feedback-title">Spa Experience</h3>
+                        <p class="feedback-excerpt">I treated myself to a day at the hotel spa, and it was absolutely worth it. The massage therapist was skilled, and the facilities were clean and tranquil. I left feeling completely...</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+                
+                <!-- Feedback Card 5 -->
+                <div class="feedback-card">
+                    <div class="feedback-image" style="background-image: url('/api/placeholder/400/200');"></div>
+                    <div class="feedback-content">
+                        <div class="feedback-meta">
+                            <span>Posted by: David Lee</span>
+                            <span>February 20, 2025</span>
+                        </div>
+                        <h3 class="feedback-title">Anniversary Celebration</h3>
+                        <p class="feedback-excerpt">We celebrated our 10th anniversary at The Grand Hotel, and the staff went above and beyond to make it special. From the champagne welcome to the rose petals in our room, every detail...</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+                
+                <!-- Feedback Card 6 -->
+                <div class="feedback-card">
+                    <div class="feedback-image" style="background-image: url('/api/placeholder/400/200');"></div>
+                    <div class="feedback-content">
+                        <div class="feedback-meta">
+                            <span>Posted by: Lisa Martinez</span>
+                            <span>February 15, 2025</span>
+                        </div>
+                        <h3 class="feedback-title">Family-Friendly Amenities</h3>
+                        <p class="feedback-excerpt">Traveling with three kids can be challenging, but The Grand Hotel made it easy. The kids' club kept our children entertained while we enjoyed some adult time. The family suite was spacious...</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Submit Feedback Form -->
+            <div class="feedback-form">
+                <h2 class="section-title">Share Your Experience</h2>
+                <form id="feedbackForm">
+                    <div class="form-group">
+                        <label for="name">Your Name:</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address:</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="title">Title of Your Experience:</label>
+                        <input type="text" id="title" class="form-control" required>
+                    </div>
+                    
+                    <div class="rating-group">
+                        <span class="rating-label">Your Rating:</span>
+                        <div class="stars">
+                            <button type="button" class="star" data-value="1">★</button>
+                            <button type="button" class="star" data-value="2">★</button>
+                            <button type="button" class="star" data-value="3">★</button>
+                            <button type="button" class="star" data-value="4">★</button>
+                            <button type="button" class="star" data-value="5">★</button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="feedback">Your Feedback:</label>
+                        <textarea id="feedback" class="form-control" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="photo">Upload Photos (optional):</label>
+                        <input type="file" id="photo" class="form-control" accept="image/*" multiple>
+                    </div>
+                    
+                    <button type="submit" class="btn">Submit Feedback</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <p>The Grand Hotel has been providing exceptional hospitality since 1995. Our commitment to service excellence ensures an unforgettable stay for all our guests.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="room_booking.html">Room Booking</a></li>
+                        <li><a href="room_status.html" class="active">Room Status</a></li>
+                        <li><a href="feedback.html">Feedback</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <p>123 Grand Avenue<br>New York, NY 10001</p>
+                    <p>Phone: (123) 456-7890<br>Email: info@thegrandhotel.com</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 The Grand Hotel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Star rating functionality
+        const stars = document.querySelectorAll('.star');
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                const value = star.getAttribute('data-value');
+                
+                // Reset all stars
+                stars.forEach(s => s.classList.remove('active'));
+                
+                // Activate stars up to the clicked one
+                for (let i = 0; i < value; i++) {
+                    stars[i].classList.add('active');
+                }
+            });
+        });
+        
+        // Form submission
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your feedback! It will be reviewed and posted soon.');
+            this.reset();
+            stars.forEach(s => s.classList.remove('active'));
+        });
+    </script>
+</body>
+</html>

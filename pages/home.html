@@ -63,7 +63,7 @@
             color: #d4af37;
         }
         
-        .active {
+        .nav-links a.active {
             border-bottom: 2px solid #d4af37;
             padding-bottom: 5px;
         }
@@ -353,16 +353,18 @@
 <body>
     <!-- Header Section -->
     <header class="header">
-        <div class="container nav-container">
-            <div class="logo">The Grand Hotel</div>
-            <ul class="nav-links">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="room_booking.html">Room Booking</a></li>
-                <li><a href="room_status.html" class="active">Room Status</a></li>
-                <li><a href="feedback.html">Feedback</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
+        <nav class="navbar">
+            <div class="container nav-container">
+                <a href="#" class="logo">The Grand Hotel</a>
+                <ul class="nav-links">
+                    <li><a href="home.html" class="active">Home</a></li>
+                    <li><a href="room_booking.html">Room Booking</a></li>
+                    <li><a href="room_status.html">Room Status</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
     </header>
 
     <!-- Hero Section -->
@@ -371,7 +373,7 @@
         <div class="hero-content">
             <h1>Welcome to The Grand Hotel</h1>
             <p>Experience luxury, comfort, and exceptional service in the heart of the city.</p>
-            <a href="room-booking.html" class="btn">Book Now</a>
+            <a href="room_booking.html" class="btn">Book Now</a>
         </div>
     </section>
 
