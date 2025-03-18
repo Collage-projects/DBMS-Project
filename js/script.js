@@ -44,3 +44,13 @@
                 console.log('Form submitted:', this.id);
             });
         });
+        document.getElementById('loginLink').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById('signinForm').classList.remove('active');
+            document.getElementById('loginForm').classList.add('active');
+        });
+        document.getElementById('signupLink').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById('loginForm').classList.remove('active');
+            document.getElementById('signinForm').classList.add('active');
+        });
