@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Grand Hotel - Deluxe King Room</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/room_book.css">
+    <link rel="stylesheet" href="../css/deluxe_king.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="../index.html">The Grand Hotel</a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../pages/room_booking.html">Room Booking</a></li>
+                    <li><a href="../pages/room_status.html">Room Status</a></li>
+                    <li><a href="../pages/feedback.html">Feedback</a></li>
+                    <li><a href="../pages/about.html">About us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+
+    <div class="room-banner">
+        <div class="banner-content">
+            <h1>Luxury Accommodations</h1>
+            <p>Discover our exceptional rooms and suites designed for your ultimate comfort</p>
+        </div>
+    </div>
+
+    <div class="content-container">
+        <h2 class="section-title">Deluxe King Room</h2>
+        
+        <div class="room-details-container">
+            <div class="room-gallery">
+                <div class="main-image">
+                    <img src="../image/room.jpg" alt="Deluxe King Room" id="mainImage">
+                </div>
+                <div class="thumbnail-gallery">
+                    <img src="../image/room.jpg" alt="Room View" onclick="changeImage(this.src)">
+                    <img src="../image/back.jpg" alt="Bathroom" onclick="changeImage(this.src)">
+                    <img src="../image/first.png" alt="Living Area" onclick="changeImage(this.src)">
+                </div>
+            </div>
+
+            <div class="room-info">
+                <div class="room-description">
+                    <p>Experience ultimate comfort in our spacious Deluxe King Room featuring premium amenities and a luxurious king-sized bed. Perfect for couples or business travelers seeking refined accommodation.</p>
+                </div>
+
+                <div class="amenities-section">
+                    <h3>Room Features</h3>
+                    <div class="amenities-list">
+                        <div class="amenity-item">
+                            <span class="amenity-icon">🛏️</span>
+                            <span>King Size Bed</span>
+                        </div>
+                        <div class="amenity-item">
+                            <span class="amenity-icon">🚿</span>
+                            <span>Rainfall Shower</span>
+                        </div>
+                        <div class="amenity-item">
+                            <span class="amenity-icon">📺</span>
+                            <span>55" UHD TV</span>
+                        </div>
+                        <div class="amenity-item">
+                            <span class="amenity-icon">🧊</span>
+                            <span>Mini Bar</span>
+                        </div>
+                        <div class="amenity-item">
+                            <span class="amenity-icon">🔒</span>
+                            <span>In-room Safe</span>
+                        </div>
+                        <div class="amenity-item">
+                            <span class="amenity-icon">🌡️</span>
+                            <span>Climate Control</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pricing-section">
+                    <div class="price-display">
+                        <span class="price-amount">$259</span>
+                        <span class="price-period">/night</span>
+                    </div>
+                    <button class="book-now-btn" id="bookNowButton">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Form Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Book Your Deluxe King Room</h2>
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label for="fullName">Full Name *</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group half">
+                        <label for="checkIn">Check-in Date *</label>
+                        <input type="date" id="checkIn" name="checkIn" required>
+                    </div>
+                    <div class="form-group half">
+                        <label for="checkOut">Check-out Date *</label>
+                        <input type="date" id="checkOut" name="checkOut" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group half">
+                        <label for="guests">Number of Guests *</label>
+                        <select id="guests" name="guests" required>
+                            <option value="1">1 Person</option>
+                            <option value="2" selected>2 People</option>
+                        </select>
+                    </div>
+                    <div class="form-group half">
+                        <label for="roomType">Room Type</label>
+                        <input type="text" id="roomType" name="roomType" value="Deluxe King Room" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="specialRequests">Special Requests</label>
+                    <textarea id="specialRequests" name="specialRequests" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="paymentMethod">Payment Method *</label>
+                    <select id="paymentMethod" name="paymentMethod" required>
+                        <option value="">Select Payment Method</option>
+                        <option value="creditCard">Credit Card</option>
+                        <option value="debitCard">Debit Card</option>
+                        <option value="paypal">PayPal</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <span class="checkmark"></span>
+                        I agree to the terms and conditions
+                    </label>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="submit-btn">Complete Booking</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>The Grand Hotel</h3>
+                <p>Luxury accommodations for unforgettable stays</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>123 Luxury Avenue</p>
+                <p>Phone: (555) 123-4567</p>
+                <p>Email: info@grandhotel.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#">Facebook</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">Instagram</a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 The Grand Hotel. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../js/deluxe_king.js"></script>
+</body>
+</html>
